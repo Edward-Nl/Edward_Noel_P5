@@ -30,19 +30,20 @@ function ajoutDesArticleAuPanier() {
 };
 
 // Fontion qui calcule et affiche le prix total du panier
+let totalPrix = 0;
 const prixTotalPanier = function() {
     if(localStorage.getItem('panier') === null) {
         prixTotal.innerText = 0 + ' €';
     } else {
-        let total = 0;
         for (let i = 0; i < panier.length; i++) {
-            total += Number((panier[i].price/100) * panier[i].quantity)
-            console.log(total);
-            prixTotal.innerText = total + ' €';
+            totalPrix += Number((panier[i].price/100) * panier[i].quantity)
+            console.log(totalPrix);
+            prixTotal.innerText = totalPrix + ' €';
         }
     }
 };
-
+prixTotalPanier();
+console.log(totalPrix)
 // Fonction qui calcule et affiche le nombre d'article au Panier 
 const nombreArticleDuPanier = function() {
     if(localStorage.getItem('panier') === null) {
@@ -73,7 +74,6 @@ const SupressionAll = function() {
 
 // Appelle des fonction 
 ajoutDesArticleAuPanier()
-prixTotalPanier()
 nombreArticleDuPanier()
 bagdeDuPanier()
 
@@ -90,29 +90,55 @@ const conteneur = document.getElementById('contenuPanier');
 
 
 
-const storage = JSON.parse(localStorage.getItem("user"));
-console.log(storage);
-let arrayOfProduct = []
+
+// Requete POST
+
+
+let products = []
+
 let panierId = function() {
    for (let i = 0; i < panier.length; i++) {
             let result = panier[i]._id;
-            arrayOfProduct.push(result)
+            products.push(result)
                      
         } 
 } 
-panierId()
-console.log(arrayOfProduct)
+
+
+
+
 bouton.onclick = () =>{
-    
-    const user = {
+    panierId()
+    let contact = {
         firstName: firstName.value,
         lastName: lastName.value,
         address: address.value,
         city: city.value,
-        email: email.value,
-        products: arrayOfProduct
+        email: email.value
     };
-
-    localStorage.setItem("user",JSON.stringify(user));  //nom de la clé + const a enregistrer 
-    
+    let envoiContact = JSON.stringify({
+        contact, products
+    })
+    console.log(envoiContact)
+    requetePost(envoiContact)
 };
+
+function requetePost(envoiContact) {
+    fetch("http://localhost:3000/api/cameras/order", {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: envoiContact
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    }).then(res => {
+        localStorage.setItem('orderId', JSON.stringify(res.orderId));
+        localStorage.setItem('contact', JSON.stringify(res.contact));
+        window.location.replace("./confirmationCommande.html");
+    }).catch((e) => {
+        console.log(e);
+    });
+}
+

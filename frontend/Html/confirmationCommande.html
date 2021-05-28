@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!--<script src="frontend-js/test.js" defer></script>
-    <script src="frontend-js/index.js" defer></script> -->
-    <link rel="stylesheet" href="style.css">
+    <script src="../JavaScript/test.js" defer></script>
+    <script src="../JavaScript/confirmation.js" defer></script>
+    <!--<link rel="stylesheet" href="style.css">-->
     <title>Confirmation de Commande</title>
 </head>
 
@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a href="index.html" class="navbar-brand">
+            <a href="../../index.html" class="navbar-brand">
                 <img src="" alt="">
                 Orinoco
             </a>
@@ -28,7 +28,7 @@
             <div id="navbarContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Accueil</a>
+                        <a class="nav-link" href="../../index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Mon Compte</a>
@@ -48,44 +48,47 @@
     <main class="container">
 
         <div class="container text-center">
-            <H1 class="h1 my-3">Commande effectué ! </H1>
-            <p class="">Merci pour votre achat sur Orinoco <br>
-                Votre commande porte le numero : 012345678998745611
-            </p>
+            <div id="numero">
+                
+            </div>
+            <div id="form">
+                
+            </div>
+
             <h2>Récapitulatif de votre commande : </h2>
 
-                <div class="">
-                    <table class="table table-striped table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Nom de l'article</th>
-                                <th scope="col">Apercu</th>
-                                <th scope="col">Quantité</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-        
-                        <tbody id="contenuPanier">
-        
-                        </tbody>
-        
-        
-                    </table>
-                </div>
-
-                <div class="" id="totalComande">
-                    <table class="table">
+            <div class="">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
                         <tr>
-                            <th>Nombre total d'article : </th>
-                            <th id="nombreArticle"></th>
-                            <th>Prix Total de la commande : </th>
-                            <th id="PrixTotal"></th>
-                            </th>
+                            <th scope="col">Nom de l'article</th>
+                            <th scope="col">Apercu</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col"></th>
                         </tr>
-                    </table>
-                </div>
-            <button class="btn btn-outline-primary my-3">Retour à l'accueil</button>
+                    </thead>
+
+                    <tbody id="contenuPanier">
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
+            <div class="" id="totalComande">
+                <table class="table">
+                    <tr>
+                        <th>Nombre total d'article : </th>
+                        <th id="nombreArticle"></th>
+                        <th>Prix Total de la commande : </th>
+                        <th id="PrixTotal"></th>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <button id="retour" class="btn btn-outline-primary my-3">Retour à l'accueil</button>
         </div>
 
     </main>
