@@ -1,19 +1,16 @@
 const affichageArticle = document.getElementById('listeArticle');
-
+const panier = JSON.parse(localStorage.getItem("panier"));
+let carteArticle = '';
 // Récuperation des données de l'API
 fetch("http://localhost:3000/api/cameras")
-    .then(res => res.json())
-    .then(res => {
+  .then(res => res.json())
+  .then(res => {
       console.log(res);
-
-      // Creation de la varible qui contient les élement
-      let carteArticle = '';
-
-      // Creation des cartes article de la page principal
+      // Boucle les article ....
       res.forEach(res => {
         carteArticle += `
-        <div class="col mb-5">
-        <div class="card" data-id=${res._id}>
+        <div class="col mb-5" data-id=${res._id}>
+        <div class="card" >
           <img class="card-img-top" src=${res.imageUrl} alt="Image Camera Vintage">
           <div class="card-body">
             <h5 class="card-title">${res.name}</h5>
@@ -26,15 +23,10 @@ fetch("http://localhost:3000/api/cameras")
         <hr>
             `  
     });
-
-    // Ajoute mes élement au Html
-    affichageArticle.innerHTML = carteArticle;
+    // .... et les ajoute au HTML 
+    affichageArticle.innerHTML = carteArticle;    
     })
-
     .catch(e => {
       console.log(e)
     });
-
-
-const panier = JSON.parse(localStorage.getItem("panier"));
 bagdeDuPanier()

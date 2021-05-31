@@ -8,7 +8,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="../JavaScript/test.js" defer></script>
     <script src="../JavaScript/confirmation.js" defer></script>
-    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="../Css/style.css">
     <title>Confirmation de Commande</title>
 </head>
 
@@ -48,7 +48,7 @@
     <main class="container">
 
         <div class="container text-center">
-            <div id="numero">
+            <div id="numero" class="bg-secondary text-light py-5 rounded">
                 
             </div>
             <div id="form">
@@ -62,10 +62,9 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Nom de l'article</th>
-                            <th scope="col">Apercu</th>
+                            <th class="apercu" scope="col">Apercu</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Prix</th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -79,11 +78,11 @@
 
             <div class="" id="totalComande">
                 <table class="table">
-                    <tr>
-                        <th>Nombre total d'article : </th>
-                        <th id="nombreArticle"></th>
-                        <th>Prix Total de la commande : </th>
-                        <th id="PrixTotal"></th>
+                    <tr class="row">
+                        <th class="col-6 col-md">Total d'article : </th>
+                        <th class="col-6 col-md" id="nombreArticle"></th>
+                        <th class="col-6 col-md">Prix Total : </th>
+                        <th class="col-6 col-md" id="PrixTotal"></th>
                         </th>
                     </tr>
                 </table>

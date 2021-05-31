@@ -26,9 +26,7 @@ function ajoutDesArticleAuPanier() {
     // Affiche le panier 
     affichageDuPanier.innerHTML = liste;
     }
-
 };
-
 // Fontion qui calcule et affiche le prix total du panier
 let totalPrix = 0;
 const prixTotalPanier = function() {
@@ -36,14 +34,12 @@ const prixTotalPanier = function() {
         prixTotal.innerText = 0 + ' €';
     } else {
         for (let i = 0; i < panier.length; i++) {
-            totalPrix += Number((panier[i].price/100) * panier[i].quantity)
-            console.log(totalPrix);
+            totalPrix += Number((panier[i].price/100) * panier[i].quantity);
             prixTotal.innerText = totalPrix + ' €';
         }
     }
 };
 prixTotalPanier();
-console.log(totalPrix)
 // Fonction qui calcule et affiche le nombre d'article au Panier 
 const nombreArticleDuPanier = function() {
     if(localStorage.getItem('panier') === null) {
@@ -51,33 +47,26 @@ const nombreArticleDuPanier = function() {
     } else {
         let total = 0;
         for (let i = 0; i < panier.length; i++) {
-        total += Number(panier[i].quantity)
-        console.log(total);
+        total += Number(panier[i].quantity);
         nombreArticle.innerText = total + ' Article(s)';
         }
     }
 };
-
 //Fontion suppresion de l'article choisi
 const deleteItem = function(index){
     panier.splice(index, 1);
     localStorage.setItem("panier", JSON.stringify(panier));
     location.reload()
 }
-
 //Fontion suppresion de tout les article
 const SupressionAll = function() {
     localStorage.clear('panier')
     location.reload()
 }
-
-
 // Appelle des fonction 
 ajoutDesArticleAuPanier()
 nombreArticleDuPanier()
 bagdeDuPanier()
-
-
 
 // DONNées DE CONTACT ET ENVOI DU PANIER AU SERVEUR 
 const firstName = document.getElementById('firstName');
@@ -87,15 +76,8 @@ const city = document.getElementById('city');
 const email = document.getElementById('email');
 
 const conteneur = document.getElementById('contenuPanier');
-
-
-
-
 // Requete POST
-
-
 let products = []
-
 let panierId = function() {
    for (let i = 0; i < panier.length; i++) {
             let result = panier[i]._id;
@@ -103,9 +85,6 @@ let panierId = function() {
                      
         } 
 } 
-
-
-
 
 bouton.onclick = () =>{
     panierId()
@@ -133,7 +112,7 @@ function requetePost(envoiContact) {
     }).then(res => {
         console.log(res);
         return res.json();
-    }).then(res => {
+    }).then(res =>  {
         localStorage.setItem('orderId', JSON.stringify(res.orderId));
         localStorage.setItem('contact', JSON.stringify(res.contact));
         window.location.replace("./confirmationCommande.html");
@@ -141,4 +120,3 @@ function requetePost(envoiContact) {
         console.log(e);
     });
 }
-
