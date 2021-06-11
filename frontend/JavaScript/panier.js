@@ -5,7 +5,7 @@ const nombreArticle = document.getElementById('nombreArticle');
 const panier = JSON.parse(localStorage.getItem("panier"));
 let liste = "";
 console.log(panier);
-
+// Fonction qui affiche un panier vide ou les articles choisi
 function ajoutDesArticleAuPanier() {
     if(localStorage.getItem('panier') === null) {
         affichageDuPanier.innerHTML = `
@@ -23,10 +23,10 @@ function ajoutDesArticleAuPanier() {
         </tr>
         `
     });
-    // Affiche le panier 
     affichageDuPanier.innerHTML = liste;
-    }
+    };
 };
+
 // Fontion qui calcule et affiche le prix total du panier
 let totalPrix = 0;
 const prixTotalPanier = function() {
@@ -36,10 +36,10 @@ const prixTotalPanier = function() {
         for (let i = 0; i < panier.length; i++) {
             totalPrix += Number((panier[i].price/100) * panier[i].quantity);
             prixTotal.innerText = totalPrix + ' €';
-        }
+        };
     }
 };
-prixTotalPanier();
+
 // Fonction qui calcule et affiche le nombre d'article au Panier 
 const nombreArticleDuPanier = function() {
     if(localStorage.getItem('panier') === null) {
@@ -49,24 +49,28 @@ const nombreArticleDuPanier = function() {
         for (let i = 0; i < panier.length; i++) {
         total += Number(panier[i].quantity);
         nombreArticle.innerText = total + ' Article(s)';
-        }
+        };
     }
 };
-//Fontion suppresion de l'article choisi
+//Fontion suppression de l'article choisi
 const deleteItem = function(index){
     panier.splice(index, 1);
     localStorage.setItem("panier", JSON.stringify(panier));
-    location.reload()
-}
-//Fontion suppresion de tout les article
+    location.reload();
+};
+//Fontion suppression de tout les article
 const SupressionAll = function() {
-    localStorage.clear('panier')
-    location.reload()
+    localStorage.clear('panier');
+    location.reload();
 }
 // Appelle des fonction 
-ajoutDesArticleAuPanier()
-nombreArticleDuPanier()
-bagdeDuPanier()
+ajoutDesArticleAuPanier();
+prixTotalPanier();
+nombreArticleDuPanier();
+bagdeDuPanier();
+
+
+
 
 // DONNées DE CONTACT ET ENVOI DU PANIER AU SERVEUR 
 const firstName = document.getElementById('firstName');
@@ -76,32 +80,16 @@ const city = document.getElementById('city');
 const email = document.getElementById('email');
 
 const conteneur = document.getElementById('contenuPanier');
-// Requete POST
+// Crée un tableau qui contient les id des articles au panier
 let products = []
 let panierId = function() {
    for (let i = 0; i < panier.length; i++) {
-            let result = panier[i]._id;
-            products.push(result)
-                     
-        } 
-} 
-
-bouton.onclick = () =>{
-    panierId()
-    let contact = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        address: address.value,
-        city: city.value,
-        email: email.value
-    };
-    let envoiContact = JSON.stringify({
-        contact, products
-    })
-    console.log(envoiContact)
-    requetePost(envoiContact)
+        let result = panier[i]._id;
+        products.push(result)                     
+    }; 
 };
 
+// Requete Post 
 function requetePost(envoiContact) {
     fetch("http://localhost:3000/api/cameras/order", {
         method: 'POST',
@@ -115,8 +103,38 @@ function requetePost(envoiContact) {
     }).then(res =>  {
         localStorage.setItem('orderId', JSON.stringify(res.orderId));
         localStorage.setItem('contact', JSON.stringify(res.contact));
-        window.location.replace("./confirmationCommande.html");
+        window.location.replace("./confirmation.html");
     }).catch((e) => {
         console.log(e);
     });
-}
+};
+// Envoi les données id des article et contact
+bouton.onclick = (event) =>{
+    event.preventDefault();
+    panierId()
+    //Récup les données de contact
+    let contact = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        address: address.value,
+        city: city.value,
+        email: email.value
+    };
+    // Controle la validité du formulaire 
+    if((ValidForm.textValide(firstName.value) == true) && (ValidForm.textValide(lastName.value) == true) &&
+    (ValidForm.textValide(city.value) == true)) {
+        if((ValidForm.mailValide(email.value) == true)) {
+            let envoiContact = JSON.stringify({contact, products});
+            console.log(envoiContact);
+            requetePost(envoiContact);
+            } else {
+                document.querySelector('div.alert').style.display = "block";
+                document.querySelector('div.alert strong').textContent = 'Veulliez indiquer une adresse mail valide';
+            };    
+    } else {
+        document.querySelector('div.alert').style.display = "block";
+        document.querySelector('div.alert strong').textContent = 'Veulliez remplir les champs correctement';
+    };
+    
+};
+

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="../JavaScript/test.js" defer></script>
-    <script src="../JavaScript/MonPanier.js" defer></script>
+    <script src="../JavaScript/app.js" defer></script>
+    <script src="../JavaScript/panier.js" defer></script>
     <link rel="stylesheet" href="../Css/style.css">
     <title>Mon Panier</title>
 </head>
@@ -34,7 +34,7 @@
                         <a class="nav-link" href="#">Mon Compte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Panier.Html">
+                        <a class="nav-link" href="panier.Html">
                             <i class="fas fa-shopping-basket"></i>
                             Mon Panier
                             <span id="badgeArticle" class="badge badge-light"></span>
@@ -64,6 +64,7 @@
                 </tbody>
             </table>
         </div>
+        
         <h2>Récapitulatif </h2>
         <div class="" id="totalComande">
             <table class="table">
@@ -72,7 +73,8 @@
                     <th class="col-6 col-md" id="nombreArticle"></th>
                     <th class="col-6 col-md">Prix Total : </th>
                     <th class="col-6 col-md" id="PrixTotal"></th>
-                    <th class="col-12 col-md text-center"><button onclick="SupressionAll()" class="btn btn-danger col" type="reset">Vider le Panier</button>
+                    <th class="col-12 col-md text-center"><button onclick="SupressionAll()" class="btn btn-danger col"
+                            type="reset">Vider le Panier</button>
                     </th>
                 </tr>
             </table>
@@ -101,6 +103,14 @@
             <div class="form-group row">
                 <label class="col-sm-2 mx-2" for="email">Email :</label>
                 <input class="mx-3 col-sm-8 form-control" id="email" type="email" placeholder="Email" required>
+            </div>
+
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong></strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <button class="btn btn-outline-warning col-12 col-md-3 my-3" id="bouton">Valider la Commande</button>

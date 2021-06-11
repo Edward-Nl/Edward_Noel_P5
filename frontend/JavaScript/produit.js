@@ -1,14 +1,12 @@
 const detailProduit = document.getElementById('detailProduit');
 const alertPanier = document.getElementById('alertPanier');
 const variableVide = '';
-// Récuperation de l'id du produit 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id');
+// Affiche l'article choisi
+const id = App.getParamsId();
 const url = "http://localhost:3000/api/cameras/"+ id;
 console.log('ID de l\'article choisi : ' + id + '. et URL de l\'article choisi : ' + url);
 
-
+// Recupère les données 
 fetch(url)
     .then(res => res.json())
     .then(res => {
@@ -33,7 +31,7 @@ fetch(url)
             </div>
         </div>
         `;
-        // Crée les option de personalisation de l'article choisi 
+        // Crée les options de personnalisation de l'article choisi 
         let lenses = res.lenses;
         console.log('longeur de la liste des option : ' + lenses.length + ' lentiles')
         for(let i = 0; i < lenses.length; i++) {

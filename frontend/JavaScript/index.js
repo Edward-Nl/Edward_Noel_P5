@@ -6,7 +6,7 @@ fetch("http://localhost:3000/api/cameras")
   .then(res => res.json())
   .then(res => {
       console.log(res);
-      // Boucle les article ....
+      // Boucle les articles ....
       res.forEach(res => {
         carteArticle += `
         <div class="col mb-5" data-id=${res._id}>
@@ -16,17 +16,19 @@ fetch("http://localhost:3000/api/cameras")
             <h5 class="card-title">${res.name}</h5>
             <p class="card-text">${res.description}</p>
             <p id="prix" class="card-text font-weight-bold text-right">${(res.price/100)}€</p>
-            <a href="./frontend/html/ArticleDetail.html?id=${res._id}" class="btn btn-outline-info col-12 my-3">Voir en detail</a>
+            <a href="./frontend/html/article.html?id=${res._id}" class="btn btn-outline-info col-12 my-3">Voir en detail</a>
           </div>
         </div>
         </div>
         <hr>
             `  
     });
-    // .... et les ajoute au HTML 
+    // .... et les ajoutes au HTML 
     affichageArticle.innerHTML = carteArticle;    
     })
     .catch(e => {
       console.log(e)
-    });
+    })
+;
+// Appelle de ma fonction qui affiche le nb d'article au panier 
 bagdeDuPanier()

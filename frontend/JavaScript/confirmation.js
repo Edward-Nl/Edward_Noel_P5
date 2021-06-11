@@ -2,10 +2,10 @@
 const orderId = JSON.parse(localStorage.getItem("orderId"));
 const contact = JSON.parse(localStorage.getItem("contact"));
 const panier = JSON.parse(localStorage.getItem("panier"));
-console.log('N de commande : ' + orderId)
+console.log('N de commande : ' + orderId);
 console.log(contact);
-console.log(panier)
-//Création des differente Const
+console.log(panier);
+
 const numero = document.getElementById('numero');
 const form = document.getElementById('form');
 const contenuPanier = document.getElementById('contenuPanier');
@@ -46,19 +46,19 @@ const affichageDeLaPage = function () {
     contenuPanier.innerHTML = liste;
     // Affichage du prix Total
     for (let i = 0; i < panier.length; i++) {
-        totalPrix += Number((panier[i].price / 100) * panier[i].quantity)
+        totalPrix += Number((panier[i].price / 100) * panier[i].quantity);
         prixTotal.innerText = totalPrix + ' €';
-    }
+    };
     // Affichage du total d'Articles
     for (let i = 0; i < panier.length; i++) {
-        totalArticle += Number(panier[i].quantity)
+        totalArticle += Number(panier[i].quantity);
         nombreArticle.innerText = totalArticle + ' Article(s)';
-    }
-}
-// Appel de la fonction 
+    };
+};
+// Appelle de la fonction 
 affichageDeLaPage();
-// Bouton de retour, envoi vers la page d'accueil et vide le LocalStorage 
+// Bouton de retour, envoi vers la page d'accueil et vide tout le LocalStorage 
 retour.onclick = () => {
-    localStorage.clear()
+    localStorage.clear();
     window.location.replace("../../index.html");
-}
+};
