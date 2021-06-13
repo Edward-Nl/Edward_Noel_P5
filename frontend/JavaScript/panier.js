@@ -6,7 +6,7 @@ const panier = JSON.parse(localStorage.getItem("panier"));
 let liste = "";
 console.log(panier);
 // Fonction qui affiche un panier vide ou les articles choisi
-function ajoutDesArticleAuPanier() {
+function affichageDesArticleAuPanier() {
     if(localStorage.getItem('panier') === null) {
         affichageDuPanier.innerHTML = `
             <h2 class="text-center text-danger my-3"> Le panier est vide </h2>`;
@@ -64,7 +64,7 @@ const SupressionAll = function() {
     location.reload();
 }
 // Appelle des fonction 
-ajoutDesArticleAuPanier();
+affichageDesArticleAuPanier();
 prixTotalPanier();
 nombreArticleDuPanier();
 bagdeDuPanier();
