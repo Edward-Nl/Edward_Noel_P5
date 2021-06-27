@@ -21,7 +21,7 @@ const affichageDeLaPage = function () {
     numero.innerHTML = `
     <H1 class="h1 my-3">Commande effectué ! </H1>
     <p class="">Merci pour votre achat sur Orinoco <br>
-        Votre commande porte le numero :<strong> ${orderId}</strong>
+        Votre commande porte le numéro :<strong> ${orderId}</strong>
     </p>
     `;
     // Affichage des Coordonnées de l'acheteur 
