@@ -8,10 +8,11 @@ Projet de formation développeur web
 
 ## Instruction  
 Le but est de réaliser la v1 d'un site e-commerce qui propose des appareils photo.  
-Aucune maquette n'est fourni pour ce projet, Bootstrap peut être utilisé, mais les frameworks Js sont interdit.
-Une API est fourni pour ce projet.  
+Aucune maquette n'est fournie pour ce projet, Bootstrap peut être utilisé, mais les frameworks Js sont interdit.  
+Le site doit avoir au moins, une page d'accueil qui liste les produits en vente, une page qui présente chaque article en détails (description, photo, liste de personnalisation, ...), une page panier (montre les article que l'utilisateur veux acheter et un formulaire de contact), et enfin une page de validation de commande.  
+Une API est fournie pour ce projet.  
 Le frontend est à développer, et dois être bien intégré avec le backend du site.  
-Les articles sont stockés sur MongoDB, la base de données appartient à OC donc il se peut qu'elle ne soit plus accessible par la suite.  
+Les articles en vente sont stockés sur MongoDB, la base de données appartient à OC donc il se peut qu'elle ne soit plus accessible par la suite.  
 
 ## Installation  
 Pour avoir accès à ce projet, il faut :  
