@@ -12,7 +12,8 @@ Aucune maquette n'est fournie pour ce projet, Bootstrap peut être utilisé, mai
 Le site doit avoir au moins, une page d'accueil qui liste les produits en vente, une page qui présente chaque article en détails (description, photo, liste de personnalisation, ...), une page panier (montre les article que l'utilisateur veux acheter et un formulaire de contact), et enfin une page de validation de commande.  
 Une API est fournie pour ce projet.  
 Le frontend est à développer, et dois être bien intégré avec le backend du site.  
-Les articles en vente sont stockés sur MongoDB, la base de données appartient à OC donc il se peut qu'elle ne soit plus accessible par la suite.  
+Les articles en vente sont stockés sur MongoDB, la base de données appartient à OC donc il se peut qu'elle ne soit plus accessible par la suite.
+L'Api est fourni prête à l'emploi, elle est codé avec Node et Express
 
 ## Installation  
 Pour avoir accès à ce projet, il faut :  
